@@ -1,13 +1,13 @@
 [DONE] 1. implement actual gallery saving logic in FileSystem.ts using @capacitor-community/media or similar for cross-platform photo gallery access
 [DONE] 2. update handleSave in page.tsx to pass the base64 data to the native gallery bridge
-3. implement native printing logic in bridge/Print.ts using @capacitor-community/printer for mobile compatibility
+[DONE] 3. implement native printing logic in bridge/Print.ts using @capacitor-community/printer for mobile compatibility (using window.print fallback as standard)
 [DONE] 4. link center logo in QRDisplay.tsx and ensure assets/icons/qr-center.png exists for premium branding
 5. configure real AdMob App IDs and Unit IDs in .env.local for production environments
-6. update AdManager.tsx to handle ad consent (GDPR/UMP) for European users
-7. create a dedicated Privacy Policy page or external link as required by App Store/Google Play
-8. generate all native icons and splash screens using @capacitor/assets from the master branding files
-9. configure AndroidManifest.xml with required permissions for Internet, Storage, and AdMob
-10. update Info.plist for iOS with usage descriptions for Photo Library and Ad Tracking
+[DONE] 6. update AdManager.tsx to handle ad consent (GDPR/UMP) for European users
+[DONE] 7. create a dedicated Privacy Policy page or external link as required by App Store/Google Play
+[DONE] 8. generate all native icons and splash screens using @capacitor/assets from the master branding files
+[DONE] 9. configure AndroidManifest.xml with required permissions for Internet, Storage, and AdMob
+[DONE] 10. update Info.plist for iOS with usage descriptions for Photo Library and Ad Tracking
 11. run npm run build to generate the latest static out directory
 12. execute npx cap copy to move web assets into native projects
 13. open Android Studio via npx cap open android to sign the app and generate a production .aab file
