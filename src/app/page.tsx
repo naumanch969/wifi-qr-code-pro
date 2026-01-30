@@ -2,6 +2,7 @@
 
 import { adManager } from '@/core/ads/AdManager';
 import BannerAd from '@/core/ads/BannerAd';
+import { saveImageToGallery } from '@/core/bridge/FileSystem';
 import { triggerHaptic } from '@/core/bridge/Haptics';
 import { shareContent } from '@/core/bridge/Share';
 import { ThemeToggle } from '@/core/components/ThemeToggle';
@@ -43,18 +44,28 @@ export default function Home() {
     }
   }, [config, isLoaded, setSavedConfig]);
 
+  // ...
+
   const handleSave = async () => {
     await triggerHaptic();
     const canvas = document.getElementById('qr-code-canvas') as HTMLCanvasElement;
     if (canvas) {
-      const dataUrl = canvas.toDataURL('image/png');
-      console.log('Saving image to gallery...');
-      // Note: Implementation of actual saving would go here using FileSystem
+      try {
+        const dataUrl = canvas.toDataURL('image/png');
+        const base64Data = dataUrl.split(',')[1];
+        const fileName = `wifi-qr-${config.ssid.replace(/\s+/g, '-')}-${Date.now()}.png`;
 
-      // Mock delay and ad
-      setTimeout(async () => {
-        await adManager.showInterstitial('YOUR_INTERSTITIAL_ID');
-      }, 1000);
+        await saveImageToGallery(base64Data, fileName);
+        alert('QR Code saved to gallery!');
+
+        // Show Interstitial after successful save
+        setTimeout(async () => {
+          await adManager.showInterstitial(process.env.NEXT_PUBLIC_ADMOB_INTERSTITIAL_ID || 'ca-app-pub-3940256099942544/1033173712'); // Test ID fallback
+        }, 500);
+      } catch (error) {
+        console.error('Save failed', error);
+        alert('Failed to save QR Code.');
+      }
     }
   };
 

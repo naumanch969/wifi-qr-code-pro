@@ -1,17 +1,41 @@
+import { Media } from '@capacitor-community/media';
+import { Capacitor } from '@capacitor/core';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 
 export const saveImageToGallery = async (base64Data: string, fileName: string) => {
     try {
-        // Note: On mobile, this usually requires specific permissions and potentially 
-        // a different plugin for gallery access, but Filesystem can write to public folders.
-        const result = await Filesystem.writeFile({
-            path: fileName,
-            data: base64Data,
-            directory: Directory.Documents,
-        });
-        return result;
+        if (Capacitor.isNativePlatform()) {
+            // Use Media plugin for Android/iOS Gallery
+            await Media.savePhoto({
+                path: base64Data, // Media plugin expects base64 string directly for path arg in some versions or dataUrl
+                folder: 'WiFi QR Pro',
+                fileName: fileName,
+            });
+            return { uri: 'Saved to Gallery' };
+        } else {
+            // Fallback for Web: Download link
+            const link = document.createElement('a');
+            link.href = base64Data;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            return { uri: 'Downloaded' };
+        }
     } catch (e) {
         console.error('File write failed', e);
-        throw e;
+
+        // Fallback: Try saving to specific local Documents directory if Media fails
+        try {
+            const result = await Filesystem.writeFile({
+                path: fileName,
+                data: base64Data,
+                directory: Directory.Documents,
+            });
+            return result;
+        } catch (fallbackError) {
+            console.error('Fallback save failed', fallbackError);
+            throw e;
+        }
     }
 };
