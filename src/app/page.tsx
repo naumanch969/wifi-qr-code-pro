@@ -4,6 +4,7 @@ import { adManager } from '@/core/ads/AdManager';
 import BannerAd from '@/core/ads/BannerAd';
 import { saveImageToGallery } from '@/core/bridge/FileSystem';
 import { triggerHaptic } from '@/core/bridge/Haptics';
+import { printContent } from '@/core/bridge/Print';
 import { shareContent } from '@/core/bridge/Share';
 import { ThemeToggle } from '@/core/components/ThemeToggle';
 import { useStorage } from '@/core/hooks/useStorage';
@@ -44,7 +45,6 @@ export default function Home() {
     }
   }, [config, isLoaded, setSavedConfig]);
 
-  // ...
 
   const handleSave = async () => {
     await triggerHaptic();
@@ -79,7 +79,7 @@ export default function Home() {
 
   const handlePrint = async () => {
     await triggerHaptic();
-    window.print();
+    await printContent();
   };
 
   return (
