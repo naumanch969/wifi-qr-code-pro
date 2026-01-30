@@ -1,0 +1,7 @@
+WiFi QR Code Pro (The High-Intent Tool)
+The Functionality: A dead-simple "One-Screen" tool to help users share their home or office WiFi without revealing the password. The user enters the SSID (Network Name), selects the Encryption (WPA/WEP), and types the password. The app generates a stylized QR code with a custom logo/icon in the center. Guests scan this QR with their camera to join the network automatically.
+The Requirements:
+Library: qrcode.react or similar lightweight generator.
+UI: A "Premium Generator" interface with real-time QR updates as the user types.
+Native Feature: "Save to Gallery" and "Print" functionality for physical QR stickers.
+Ad Strategy: App Open Ad on launch; Interstitial after the QR is successfully saved to the gallery.
