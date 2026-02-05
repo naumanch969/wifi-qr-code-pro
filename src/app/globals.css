@@ -10,8 +10,8 @@
     --card-foreground: #1A1A1E;
     --primary: #C5A059;
     --primary-glow: rgba(197, 160, 89, 0.3);
-    --secondary: #2C2C30;
-    --secondary-glow: rgba(44, 44, 48, 0.2);
+    --secondary: #E4E4E7;
+    --secondary-glow: rgba(44, 44, 48, 0.1);
     --accent: #E5D5B8;
     --accent-glow: rgba(229, 213, 184, 0.4);
     --border: rgba(0, 0, 0, 0.08);
@@ -25,15 +25,15 @@
     --card-foreground: #F5F5F7;
     --primary: #D4AF37;
     --primary-glow: rgba(212, 175, 55, 0.25);
-    --secondary: #FFFFFF;
-    --secondary-glow: rgba(255, 255, 255, 0.15);
+    --secondary: #27272A;
+    --secondary-glow: rgba(255, 255, 255, 0.1);
     --accent: #A48956;
     --accent-glow: rgba(164, 137, 86, 0.2);
-    --border: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.15);
   }
 
   body {
-    @apply antialiased selection:bg-primary/30;
+    @apply antialiased;
     background-color: var(--background);
     color: var(--foreground);
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
@@ -86,6 +86,12 @@
     transform: scale(1.05);
     opacity: 0.6;
   }
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--primary-glow);
+  color: inherit;
 }
 
 @media print {
