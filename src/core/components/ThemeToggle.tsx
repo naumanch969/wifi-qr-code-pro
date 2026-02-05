@@ -8,14 +8,21 @@ export const ThemeToggle = () => {
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+        let finalTheme: 'light' | 'dark' = 'dark';
+
         if (savedTheme) {
-            setTheme(savedTheme);
-            document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+            finalTheme = savedTheme;
         } else {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setTheme(prefersDark ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', prefersDark);
+            finalTheme = prefersDark ? 'dark' : 'light';
         }
+
+        // Wrap in a microtask to avoid the synchronous setState warning
+        // while ensuring it happens as soon as possible after mount.
+        setTimeout(() => {
+            setTheme(finalTheme);
+            document.documentElement.classList.toggle('dark', finalTheme === 'dark');
+        }, 0);
     }, []);
 
     const toggleTheme = () => {

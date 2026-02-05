@@ -10,7 +10,7 @@ interface QRDisplayProps {
 export const QRDisplay = ({ value }: QRDisplayProps) => {
     return (
         <GlassCard className="flex flex-col items-center justify-center p-8 space-y-4">
-            <div className="relative rounded-3xl bg-white p-6 shadow-2xl">
+            <div className="relative rounded-3xl bg-white p-6 shadow-2xl ring-4 ring-accent/20">
                 <QRCodeCanvas
                     id="qr-code-canvas"
                     value={value}
@@ -25,7 +25,7 @@ export const QRDisplay = ({ value }: QRDisplayProps) => {
                     }}
                 />
             </div>
-            <p className="text-sm text-slate-400 font-medium">Scan to Connect</p>
+            <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest text-[10px]">Scan to Connect</p>
         </GlassCard>
     );
 };

@@ -7,9 +7,9 @@ interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 
 export const NeonButton = ({ children, className, variant = 'primary', ...props }: NeonButtonProps) => {
     const variants = {
-        primary: "bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.5)] hover:bg-blue-700 hover:shadow-[0_0_30px_rgba(37,99,235,0.7)]",
-        secondary: "bg-purple-600 text-white shadow-[0_0_20px_rgba(147,51,234,0.5)] hover:bg-purple-700 hover:shadow-[0_0_30px_rgba(147,51,234,0.7)]",
-        outline: "border border-white/20 bg-white/5 text-white backdrop-blur-sm hover:bg-white/10"
+        primary: "bg-primary text-white shadow-[0_4px_20px_var(--primary-glow)] hover:bg-primary/90 hover:shadow-[0_6px_30px_var(--primary-glow)]",
+        secondary: "bg-secondary text-foreground border border-border hover:bg-secondary/80",
+        outline: "border border-border bg-transparent text-foreground hover:bg-secondary/50"
     };
 
     return (

@@ -7,8 +7,7 @@ export const saveImageToGallery = async (base64Data: string, fileName: string) =
         if (Capacitor.isNativePlatform()) {
             // Use Media plugin for Android/iOS Gallery
             await Media.savePhoto({
-                path: base64Data, // Media plugin expects base64 string directly for path arg in some versions or dataUrl
-                folder: 'WiFi QR Pro',
+                path: base64Data,
                 fileName: fileName,
             });
             return { uri: 'Saved to Gallery' };

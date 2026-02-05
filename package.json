@@ -19,27 +19,29 @@
     "@capacitor/filesystem": "^8.1.0",
     "@capacitor/haptics": "^8.0.0",
     "@capacitor/share": "^8.0.0",
+    "@capgo/capacitor-wifi": "^8.1.6",
+    "autoprefixer": "^10.4.24",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "qrcode.react": "^4.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
     "@capacitor/android": "^8.0.2",
     "@capacitor/ios": "^8.0.2",
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "husky": "^9.1.7",
-    "tailwindcss": "^4",
+    "postcss": "^8.5.6",
     "typescript": "^5"
   }
 }

@@ -29,17 +29,18 @@ export default function Home() {
     encryption: 'WPA',
   });
 
-  const [qrValue, setQrValue] = useState('');
+  // Derive QR value during render to avoid cascading renders
+  const qrValue = encodeWiFiString(config);
 
-  // Sync state with storage once loaded
+  // Sync initial state from storage once loaded
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && savedConfig.ssid) {
       setConfig(savedConfig);
     }
-  }, [isLoaded, savedConfig]);
+  }, [isLoaded]);
 
+  // Persist config changes to storage
   useEffect(() => {
-    setQrValue(encodeWiFiString(config));
     if (isLoaded) {
       setSavedConfig(config);
     }
@@ -86,10 +87,10 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center p-6 sm:p-12">
       <header className="flex w-full max-w-lg items-center justify-between py-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 shadow-lg shadow-blue-500/30">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary shadow-lg shadow-primary/30 ring-1 ring-white/10">
             <Wifi className="text-white" size={20} />
           </div>
-          <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
             WiFi QR Pro
           </h1>
         </div>

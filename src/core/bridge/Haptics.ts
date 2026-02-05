@@ -1,4 +1,4 @@
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { NotificationType as HapticNotificationType, Haptics, ImpactStyle } from '@capacitor/haptics';
 
 export const triggerHaptic = async (style: ImpactStyle = ImpactStyle.Light) => {
     try {
@@ -8,7 +8,7 @@ export const triggerHaptic = async (style: ImpactStyle = ImpactStyle.Light) => {
     }
 };
 
-export const triggerNotificationHaptic = async (type: any) => {
+export const triggerNotificationHaptic = async (type: HapticNotificationType) => {
     try {
         await Haptics.notification({ type });
     } catch (e) {

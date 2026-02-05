@@ -53,6 +53,8 @@
 	<string>We need access to your photo library to save the generated WiFi QR Code image.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>This identifier will be used to deliver personalized ads to you.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to detect the name of the WiFi network you are currently connected to.</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>SKAdNetworkItems</key>
